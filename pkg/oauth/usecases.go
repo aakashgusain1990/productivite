@@ -1,0 +1,3 @@
+package oauth
+
+// type Oauth
