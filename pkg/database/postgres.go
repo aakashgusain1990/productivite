@@ -38,8 +38,19 @@ func NewPGDatabase(conf *entities.Config) *PGDatabase {
 		dbInstance = &PGDatabase{DB: bun.NewDB(pgDB, pgdialect.New())}
 		fmt.Printf("%+v", dbInstance)
 		ctx := context.Background()
+		// Create the user table
+		createTableSQL := `
+		CREATE TABLE IF NOT EXISTS public.user (
+			id SERIAL PRIMARY KEY,
+			name VARCHAR(255) NOT NULL,
+			username VARCHAR(255) UNIQUE NOT NULL
+		);`
+		_, err = dbInstance.DB.ExecContext(ctx, createTableSQL)
+		if err != nil {
+			log.Fatalf("Failed to create table: %v", err)
+		}
+		
 		res, err := dbInstance.DB.ExecContext(ctx, "SELECT * FROM public.expenses;")
-
 		fmt.Print(res)
 	})
 	return dbInstance
