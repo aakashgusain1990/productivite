@@ -1,13 +1,3 @@
-// env:
-//
-//	local:
-//	  port: 8080
-//	  database:
-//	    host: localhost
-//	    port: 5432
-//	    user: postgres
-//	    password: admin
-//	    db: productivite
 package inits
 
 import (
