@@ -16,7 +16,6 @@ func NewMySQLDatabase(conf *entities.Config) *MySQLDatabase {
 		if err != nil {
 			panic(err)
 		}
-		dbInstance := bun.NewDB(sqlDB, mysqldialect.New())
 	})
 	return dbInstance
 }
