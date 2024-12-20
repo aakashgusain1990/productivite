@@ -12,7 +12,7 @@ RUN go mod download
 COPY . .
 
 # Build the Go app
-RUN GOOS=linux GOARCH=amd64 go build -o main cmd/productivite/main.go
+RUN GOOS=linux GOARCH=amd64 go build -ldflags="-s" -o main cmd/productivite/main.go
 
 # Use a minimal base image to run the Go binary
 FROM alpine:latest
