@@ -11,6 +11,7 @@ RUN go mod download
 # Copy the source code into the container
 COPY . .
 
+
 # Build the Go app
 RUN GOOS=linux GOARCH=amd64 go build -ldflags="-s" -o main cmd/productivite/main.go
 
