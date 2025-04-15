@@ -37,10 +37,6 @@ func NewPGDatabase(conf *entities.Config) *PGDatabase {
 		fmt.Printf("%+v", pgDB)
 		dbInstance = &PGDatabase{DB: bun.NewDB(pgDB, pgdialect.New())}
 		fmt.Printf("%+v", dbInstance)
-		ctx := context.Background()
-		res, err := dbInstance.DB.ExecContext(ctx, "SELECT * FROM public.expenses;")
-
-		fmt.Print(res)
 	})
 	return dbInstance
 }
